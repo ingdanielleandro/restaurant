@@ -13,7 +13,7 @@ class Proteina extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'estado',
+        'name', 'estado', 'disponible',
     ];
 
         /**
@@ -22,6 +22,7 @@ class Proteina extends Model
      * @var array
      */
     protected $casts = [
-        'estado'=> 'boolean',
+        'estado' => 'boolean',
+        'disponible' => 'boolean',
     ];
 }

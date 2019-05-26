@@ -13,7 +13,7 @@ class Ejecutivo extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'estado', 'precio'
+        'name', 'estado', 'precio','disponible',
     ];
 
         /**
@@ -22,6 +22,7 @@ class Ejecutivo extends Model
      * @var array
      */
     protected $casts = [
-        'estado'=> 'boolean',
+        'estado' => 'boolean',
+        'disponible' => 'boolean',
     ];
 }

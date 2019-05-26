@@ -16,7 +16,7 @@ class CreateEjecutivosTable extends Migration
         Schema::create('ejecutivos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
-            $table->string('precio');
+            $table->integer('precio')->nullable();
             $table->boolean('disponible')->default(false);
             $table->boolean('estado')->default(true);
             $table->timestamps();
