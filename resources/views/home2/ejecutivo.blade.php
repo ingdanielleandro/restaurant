@@ -1,5 +1,6 @@
 @extends('layouts.dashboard')
 @include('home.accionese')
+@section('title', "Almuerzo ejecutivo")
 @section('content')
 <div class="row">
     <div class="col-md-7">

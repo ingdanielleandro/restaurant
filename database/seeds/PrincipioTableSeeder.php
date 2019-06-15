@@ -21,5 +21,7 @@ class PrincipioTableSeeder extends Seeder
         Principio::create([
             'name' => 'Coliflor',
         ]);
+
+        factory(Principio::class, 10)->create();
     }
 }

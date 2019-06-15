@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
 
     $this->call(CorrienteTableSeeder::class);
     $this->call(AlmuerzoTableSeeder::class);
+    $this->call(UserTableSeeder::class);
 
     }
     protected function truncateTables(array $tables)

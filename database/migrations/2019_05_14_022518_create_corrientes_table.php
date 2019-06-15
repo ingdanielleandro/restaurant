@@ -20,7 +20,7 @@ class CreateCorrientesTable extends Migration
             $table->unsignedBigInteger('principios_id')->nullable();
             $table->foreign('principios_id')->references('id')->on('principios');
             $table->boolean('disponible')->default(false);
-            $table->boolean('estado')->default(true);
+            $table->boolean('estado')->default(false);
             $table->timestamps();
         });
     }

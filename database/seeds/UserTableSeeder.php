@@ -11,6 +11,11 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        User::create([
+            'name' => 'administrador',
+            'username' => 'admin',
+            'email' => 'ingdanielleandro@gmail.com',
+            'password' => bcrypt('0000'),
+        ]);
     }
 }

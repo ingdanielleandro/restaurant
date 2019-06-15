@@ -22,5 +22,7 @@ class SopaTableSeeder extends Seeder
             'name' => 'Sancocho de hueso',
         ]);
 
+        factory(Sopa::class, 10)->create();
+
     }
 }

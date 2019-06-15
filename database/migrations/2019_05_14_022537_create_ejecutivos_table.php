@@ -18,7 +18,7 @@ class CreateEjecutivosTable extends Migration
             $table->string('name')->unique();
             $table->integer('precio')->nullable();
             $table->boolean('disponible')->default(false);
-            $table->boolean('estado')->default(true);
+            $table->boolean('estado')->default(false);
             $table->timestamps();
         });
     }

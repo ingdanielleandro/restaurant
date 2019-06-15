@@ -19,7 +19,7 @@ class CreateAdicionalesTable extends Migration
             $table->string('cantidad');
             $table->string('precio');
             $table->boolean('disponible')->default(false);
-            $table->boolean('estado')->default(true);
+            $table->boolean('estado')->default(false);
             $table->timestamps();
         });
     }

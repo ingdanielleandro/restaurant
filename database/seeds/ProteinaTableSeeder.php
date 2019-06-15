@@ -21,5 +21,7 @@ class ProteinaTableSeeder extends Seeder
         Proteina::create([
             'name' => 'Pollo sudado',
         ]);
+
+        factory(Proteina::class, 10)->create();
     }
 }

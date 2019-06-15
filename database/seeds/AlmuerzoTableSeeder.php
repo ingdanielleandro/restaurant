@@ -16,19 +16,19 @@ class AlmuerzoTableSeeder extends Seeder
      */
     public function run()
     {
-        $corrienteId = Corriente::find(1);
-        $ejecutivoId = Ejecutivo::find(1);
-        $adiconalId = Adicional::find(1);
-        $sopaId = Sopa::find(1);
+        // $corrienteId = Corriente::findOrFail(1);
+        // $ejecutivoId = Ejecutivo::findOrFail(1);
+        // $adiconalId = Adicional::findOrFail(1);
+        // $sopaId = Sopa::findOrFail(1);
 
-        Almuerzo::create([
-            'corrientes_id' => $corrienteId->id,
-            'ejecutivos_id' => $ejecutivoId->id,
-            'adicionales_id' => $adiconalId->id,
-            'sopas_id' => $sopaId->id,
-            'arroz' => true,
-            'ensalada' => true,
-            'precio' => 25000,
-        ]);
+        // Almuerzo::create([
+        //     'corrientes_id' => $corrienteId->id,
+        //     'ejecutivos_id' => $ejecutivoId->id,
+        //     'adicionales_id' => $adiconalId->id,
+        //     'sopas_id' => $sopaId->id,
+        //     'arroz' => true,
+        //     'ensalada' => true,
+        //     'precio' => 25000,
+        // ]);
     }
 }

@@ -6,12 +6,13 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <!-- CSRF Token -->
-      <meta name="csrf-token" content="{{ csrf_token() }}">
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Restaurant - Dashboard</title>
+  <title>Restaurant - @yield('title')</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -34,19 +35,29 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home.index')}}">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+            <i class="fas fa-pepper-hot"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Doña Luz</div>
       </a>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+    <a class="nav-link" href="#">
+    <i class="fas fa-concierge-bell"></i>
+    <span>Home</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-      <a class="nav-link" href="{{ route('home.index')}}">
+      <a class="nav-link" href="#">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -56,65 +67,59 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        Crear Menú
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
+      <!-- Nav Item - Almuerzo corriente Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#corriente" aria-expanded="true" aria-controls="corriente">
+        <i class="fas fa-pepper-hot"></i>
+          <span>Almuerzo Corriente</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="#">Buttons</a>
-            <a class="collapse-item" href="#">Cards</a>
+        <div id="corriente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-gradient-light py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Opciones</h6>
+          <a class="collapse-item" href="{{ route('proteina.create')}}">Proteinas</a>
+            <a class="collapse-item" href="#">Principios</a>
+            <a class="collapse-item" href="#">Sopas</a>
+
           </div>
         </div>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
+    <!-- Nav Item - Almuerzo ejecutivo Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ejecutivo" aria-expanded="true" aria-controls="ejecutivo">
+        <i class="fas fa-carrot"></i>
+            <span>Almuerzo Ejecutivo</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="#">Colors</a>
-            <a class="collapse-item" href="#">Borders</a>
-            <a class="collapse-item" href="#">Animations</a>
-            <a class="collapse-item" href="#">Other</a>
-          </div>
+        <div id="ejecutivo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-gradient-light py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Opciones</h6>
+            <a class="collapse-item" href="#">Crear especial</a>
+            </div>
         </div>
-      </li>
+        </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Addons
+        Menú del día
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Crear Menú</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="#">Login</a>
-            <a class="collapse-item" href="#">Register</a>
-            <a class="collapse-item" href="#">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="#">404 Page</a>
-            <a class="collapse-item" href="#">Blank Page</a>
+            <h6 class="collapse-header">Tablero</h6>
+          <a class="collapse-item" href="{{ route('corriente.create')}}">Almuerzo corriente</a>
+            <a class="collapse-item" href="#">Almuerzo ejecutivo</a>
           </div>
         </div>
       </li>
@@ -323,7 +328,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Logout
+                    Salir
                   </a>
               </div>
             </li>
@@ -371,12 +376,12 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Seleccione "Cerrar sesión" si está listo para finalizar su sesión actual.</div>
+        <div class="modal-body">Seleccione (Cerrar sesión) si desea finalizar su sesión actual.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="{{ route('logout') }}"
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-danger" href="{{ route('logout') }}"
           onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">Logout</a>
+                        document.getElementById('logout-form').submit();">Salir</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>

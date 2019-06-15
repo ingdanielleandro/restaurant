@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','Home\InicioController@index')->name('home');
 
 // Route::get('/menu','MenuController@index')->name('menu.index');
 // Route::get('/menu/corriente','CorrienteController@index')->name('corriente.index');
@@ -21,9 +19,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home.index');
-Route::get('/home/corriente', 'HomeController@create')->name('corriente.create');
-Route::get('/home/ejecutivo', 'EjecutivoController@create')->name('ejecutivo.create');
-Route::post('/home/corriente/guardar','HomeController@store')->name('corriente.store');
-Route::post('/home/ejecutivo/guardar','EjecutivoController@store')->name('ejecutivo.store');
+Route::view('/home', 'dashboard.index')->name('home.index');
 
+Route::prefix('dashboard/corriente')->group(function () {
+    Route::get('proteina', 'Corriente\ProteinaController@create')->name('proteina.create');
+    Route::post('proteina/store','Corriente\ProteinaController@store')->name('proteina.store');
+    Route::get('proteina/{id}','Corriente\ProteinaController@edit')->name('proteina.edit');
+    Route::put('proteina/{id}/edit','Corriente\ProteinaController@update')->name('proteina.update');
+    Route::delete('proteina/{id}','Corriente\ProteinaController@destroy')->name('proteina.destroy');
+});
+Route::prefix('dashboard/menu')->group(function () {
+    Route::get('corriente','Menu\MenuController@create')->name('corriente.create');
+    Route::post('corriente/store','Menu\MenuController@store')->name('corriente.store');
+    Route::get('corriente/restore','Menu\MenuController@restore')->name('restore');
+});

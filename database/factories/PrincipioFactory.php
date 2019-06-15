@@ -2,10 +2,10 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Proteina;
+use App\Principio;
 use Faker\Generator as Faker;
 
-$factory->define(Proteina::class, function (Faker $faker) {
+$factory->define(Principio::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
     ];
