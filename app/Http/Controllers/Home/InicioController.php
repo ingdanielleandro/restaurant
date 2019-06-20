@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Home;
 
 use App\Proteina;
+use App\Principio;
+use App\Sopa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,9 +17,11 @@ class InicioController extends Controller
      */
     public function index()
     {
-        $proteina = Proteina::all();
+        $proteinas = Proteina::where('estado', 1)->get();
+        $principios = Principio::where('estado', 1)->get();
+        $sopas = Sopa::where('estado', 1)->get();
 
-        return view('home.index',compact('proteina'));
+        return view('home.index',compact('proteinas','principios','sopas'));
 
     }
 

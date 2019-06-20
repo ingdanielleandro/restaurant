@@ -1,13 +1,18 @@
 @extends('layouts.dashboard')
-@include('dashboard.actionPro')
-@section('title', "Proteinas")
+@include('corriente.actionSop')
+@section('title', "Sopas")
 @section('content')
 <!-----------------------------COL 1 formulario--------------------------------->
 <div class="row">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-center">
+            <h4 class="display-4 text-info">SOPAS</h4>
+        </div>
+    </div>
     <div class="col-md-6">
             <div class="card shadow-sm mb-3 bg-white rounded">
                 <div class="card-header text-center">
-                Crear proteina
+                Crear sopa
                 </div>
                 <div class="card-body">
                         @if ($errors->any())
@@ -19,7 +24,7 @@
                         </ul>
                         </div>
                         @endif
-                    <form action="{{ route('proteina.store')}}" method="POST">
+                    <form action="{{ route('sopa.store')}}" method="POST">
                     @csrf
                     <label for="precio">Nombre:</label>
                     <input type="text" class="form-control" name="name" placeholder="Nombre del alimento" required>
@@ -35,14 +40,14 @@
         </div>
     </div>
 
-{{-- -----------------------------COL 2 Consulta Principios----------- --}}
+{{-- -----------------------------COL 2 Consulta sopas----------- --}}
 <div class="col-md-6">
     <div class="card shadow-sm mb-3 bg-white rounded">
         <div class="card-header text-center">
-        Listado de Proteinas
+        Listado de Sopas
         </div>
         <div class="card-body">
-            @yield('actionPro') {{--Listado de proteinas--}}
+            @yield('actionSop') {{--Listado de sopas--}}
         </div>
     </div>
 </div>

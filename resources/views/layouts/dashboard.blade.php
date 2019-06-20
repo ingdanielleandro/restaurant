@@ -32,7 +32,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home.index')}}">
@@ -67,7 +67,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Crear Menú
+        Productos
       </div>
 
       <!-- Nav Item - Almuerzo corriente Collapse Menu -->
@@ -77,12 +77,11 @@
           <span>Almuerzo Corriente</span>
         </a>
         <div id="corriente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-gradient-light py-2 collapse-inner rounded">
+          <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Opciones</h6>
           <a class="collapse-item" href="{{ route('proteina.create')}}">Proteinas</a>
-            <a class="collapse-item" href="#">Principios</a>
-            <a class="collapse-item" href="#">Sopas</a>
-
+          <a class="collapse-item" href="{{ route('principio.create')}}">Principios</a>
+            <a class="collapse-item" href="{{ route('sopa.create')}}">Sopas</a>
           </div>
         </div>
       </li>
@@ -94,9 +93,9 @@
             <span>Almuerzo Ejecutivo</span>
         </a>
         <div id="ejecutivo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-gradient-light py-2 collapse-inner rounded">
+            <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Opciones</h6>
-            <a class="collapse-item" href="#">Crear especial</a>
+            <a class="collapse-item" href="{{ route('ejecutivo.create')}}">Especiales</a>
             </div>
         </div>
         </li>
@@ -106,29 +105,29 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Menú del día
+        Menú
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#crearMenu" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Crear Menú</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="crearMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Tablero</h6>
-          <a class="collapse-item" href="{{ route('corriente.create')}}">Almuerzo corriente</a>
-            <a class="collapse-item" href="#">Almuerzo ejecutivo</a>
+          <a class="collapse-item" href="{{ route('corriente.create')}}">Corriente</a>
+          <a class="collapse-item" href="#">Ejecutivo</a>
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('consumirC.create')}}">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
+          <span>Consumir</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
@@ -160,7 +159,7 @@
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
+            <i class="fa fa-bars text-danger"></i>
           </button>
 
           <!-- Topbar Search -->
@@ -168,7 +167,7 @@
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-danger" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -349,7 +348,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; Restaurante Doña Luz 2019</span>
           </div>
         </div>
       </footer>

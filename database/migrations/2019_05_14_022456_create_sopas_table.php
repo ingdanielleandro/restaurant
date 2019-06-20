@@ -18,6 +18,7 @@ class CreateSopasTable extends Migration
             $table->string('name')->unique();
             $table->boolean('disponible')->default(false);
             $table->boolean('estado')->default(false);
+            $table->boolean('agotado')->default(false);
             $table->timestamps();
         });
     }

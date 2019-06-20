@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Corriente;
 
-use App\Proteina;
+use App\Sopa;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 
-class ProteinaController extends Controller
+class SopaController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -35,9 +35,9 @@ class ProteinaController extends Controller
      */
     public function create()
     {
-        $proteinas = Proteina::all();
+        $sopas = Sopa::all();
 
-        return view('corriente.createPro', compact('proteinas'));
+        return view('corriente.createSop', compact('sopas'));
     }
 
     /**
@@ -52,7 +52,7 @@ class ProteinaController extends Controller
         $disponible = $request->input('disponible');
 
         $data = request()->validate([
-            'name' => ['required','unique:proteinas,name','max:100'],
+            'name' => ['required','unique:sopas,name','max:100'],
         ],[
             'name.required' => 'El campo de nombre es obligatorio.',
             'name.unique' => 'El nombre ingresado ya existe.',
@@ -61,18 +61,18 @@ class ProteinaController extends Controller
 
         if ($request->filled('disponible')) {
 
-            Proteina::create([
+            Sopa::create([
                 'name' => $name,
                 'disponible' => true,
             ]);
         }else{
-            Proteina::create([
+            Sopa::create([
                 'name' => $name,
                 'disponible' => false,
             ]);
         }
 
-        return redirect()->route('proteina.create');
+        return redirect()->route('sopa.create');
     }
 
     /**
@@ -94,9 +94,9 @@ class ProteinaController extends Controller
      */
     public function edit($id)
     {
-        $proteina = Proteina::findOrFail($id);
+        $sopa = Sopa::findOrFail($id);
 
-        return view('corriente.editPro',compact('proteina'));
+        return view('corriente.editSop',compact('sopa'));
     }
 
     /**
@@ -108,13 +108,13 @@ class ProteinaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $proteina = Proteina::findOrFail($id);
+        $sopa = Sopa::findOrFail($id);
 
         $name = $request->input('name');
         $disponible = $request->input('disponible');
 
         $data = request()->validate([
-            'name' => ['required',Rule::unique('proteinas')->ignore($id),'max:100'],
+            'name' => ['required',Rule::unique('sopas')->ignore($id),'max:100'],
         ],[
             'name.required' => 'El campo de nombre es obligatorio.',
             'name.unique' => 'El nombre ingresado ya existe.',
@@ -122,18 +122,18 @@ class ProteinaController extends Controller
         ]);
 
         if ($request->filled('disponible')) {
-            $proteina->disponible = $disponible;
-            $proteina->save();
+            $sopa->disponible = $disponible;
+            $sopa->save();
         }else{
-            $proteina->disponible = false;
-            $proteina->save();
+            $sopa->disponible = false;
+            $sopa->save();
         }
-        if($name != $proteina->name){
-            $proteina->name = $name;
-            $proteina->save();
+        if($name != $sopa->name){
+            $sopa->name = $name;
+            $sopa->save();
         }
 
-        return redirect()->route('proteina.create');
+        return redirect()->route('sopa.create');
     }
 
     /**
@@ -144,9 +144,9 @@ class ProteinaController extends Controller
      */
     public function destroy($id)
     {
-        $proteina = Proteina::findOrFail($id);
-        $proteina->delete();
+        $sopa = Sopa::findOrFail($id);
+        $sopa->delete();
 
-        return redirect()->route('proteina.create');
+        return redirect()->route('sopa.create');
     }
 }

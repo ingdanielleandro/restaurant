@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Ejecutivo;
 
 use App\Ejecutivo;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 
 class EjecutivoController extends Controller
 {
-        /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -35,7 +37,7 @@ class EjecutivoController extends Controller
     {
         $ejecutivos = Ejecutivo::all();
 
-        return view('home.ejecutivo', compact('ejecutivos'));
+        return view('ejecutivo.create', compact('ejecutivos'));
     }
 
     /**
@@ -47,31 +49,29 @@ class EjecutivoController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
-            'nombre' => 'required|unique:ejecutivos,name|max:100',
+            'name' => 'required|unique:ejecutivos,name|max:100',
             'precio' => 'required|numeric',
         ],[
-            'nombre.required' => 'El campo de nombre es obligatorio.',
-            'nombre.unique' => 'El nombre ingresado ya existe.',
+            'name.required' => 'El campo de nombre es obligatorio.',
+            'name.unique' => 'El nombre ingresado ya existe.',
             'precio.required' => 'El campo de precio es obligatorio.',
             'nombre.max' => 'El alimento no puede tener más de 100 caracteres.',
             'precio.numeric' => 'El precio debe ser un número.',
         ]);
 
-
-        $nombre = $request->input('nombre');
+        $name = $request->input('name');
         $precio = $request->input('precio');
-        $checkbox = $request->input('disponible');
-        // $switch = $request->input('switch');
+        $disponible = $request->input('disponible');
 
-        if($checkbox === '1'){
+        if ($request->filled('disponible')) {
             Ejecutivo::create([
-                'name' => $nombre,
+                'name' => $name,
                 'precio' => $precio,
                 'disponible' => true,
             ]);
-        }else {
+        }else{
             Ejecutivo::create([
-                'name' => $nombre,
+                'name' => $name,
                 'precio' => $precio,
             ]);
         }
@@ -98,7 +98,9 @@ class EjecutivoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ejecutivo = Ejecutivo::findOrFail($id);
+
+        return view('ejecutivo.edit',compact('ejecutivo'));
     }
 
     /**
@@ -110,7 +112,37 @@ class EjecutivoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ejecutivo = Ejecutivo::findOrFail($id);
+
+        $name = $request->input('name');
+        $precio = $request->input('precio');
+        $disponible = $request->input('disponible');
+
+        $data = request()->validate([
+            'name' => ['required',Rule::unique('ejecutivos')->ignore($id),'max:100'],
+        ],[
+            'name.required' => 'El campo de nombre es obligatorio.',
+            'name.unique' => 'El nombre ingresado ya existe.',
+            'name.max' => 'El alimento no puede tener más de 100 caracteres.',
+        ]);
+
+        if ($request->filled('disponible')) {
+            $ejecutivo->disponible = $disponible;
+            $ejecutivo->save();
+        }else{
+            $ejecutivo->disponible = false;
+            $ejecutivo->save();
+        }
+        if($name != $ejecutivo->name){
+            $ejecutivo->name = $name;
+            $ejecutivo->save();
+        }
+        if($precio != $ejecutivo->precio){
+            $ejecutivo->precio = $precio;
+            $ejecutivo->save();
+        }
+
+        return redirect()->route('ejecutivo.create');
     }
 
     /**
@@ -121,6 +153,9 @@ class EjecutivoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ejecutivo = Ejecutivo::findOrFail($id);
+        $ejecutivo->delete();
+
+        return redirect()->route('ejecutivo.create');
     }
 }

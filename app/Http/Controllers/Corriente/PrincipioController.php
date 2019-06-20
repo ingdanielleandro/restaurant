@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Corriente;
 
-use App\Proteina;
+use App\Principio;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 
-class ProteinaController extends Controller
+class PrincipioController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -35,9 +35,9 @@ class ProteinaController extends Controller
      */
     public function create()
     {
-        $proteinas = Proteina::all();
+        $principios = Principio::all();
 
-        return view('corriente.createPro', compact('proteinas'));
+        return view('corriente.createPri', compact('principios'));
     }
 
     /**
@@ -52,7 +52,7 @@ class ProteinaController extends Controller
         $disponible = $request->input('disponible');
 
         $data = request()->validate([
-            'name' => ['required','unique:proteinas,name','max:100'],
+            'name' => ['required','unique:principios,name','max:100'],
         ],[
             'name.required' => 'El campo de nombre es obligatorio.',
             'name.unique' => 'El nombre ingresado ya existe.',
@@ -61,18 +61,18 @@ class ProteinaController extends Controller
 
         if ($request->filled('disponible')) {
 
-            Proteina::create([
+            Principio::create([
                 'name' => $name,
                 'disponible' => true,
             ]);
         }else{
-            Proteina::create([
+            Principio::create([
                 'name' => $name,
                 'disponible' => false,
             ]);
         }
 
-        return redirect()->route('proteina.create');
+        return redirect()->route('principio.create');
     }
 
     /**
@@ -94,9 +94,9 @@ class ProteinaController extends Controller
      */
     public function edit($id)
     {
-        $proteina = Proteina::findOrFail($id);
+        $principio = Principio::findOrFail($id);
 
-        return view('corriente.editPro',compact('proteina'));
+        return view('corriente.editPri',compact('principio'));
     }
 
     /**
@@ -108,13 +108,13 @@ class ProteinaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $proteina = Proteina::findOrFail($id);
+        $principio = Principio::findOrFail($id);
 
         $name = $request->input('name');
         $disponible = $request->input('disponible');
 
         $data = request()->validate([
-            'name' => ['required',Rule::unique('proteinas')->ignore($id),'max:100'],
+            'name' => ['required',Rule::unique('principios')->ignore($id),'max:100'],
         ],[
             'name.required' => 'El campo de nombre es obligatorio.',
             'name.unique' => 'El nombre ingresado ya existe.',
@@ -122,18 +122,18 @@ class ProteinaController extends Controller
         ]);
 
         if ($request->filled('disponible')) {
-            $proteina->disponible = $disponible;
-            $proteina->save();
+            $principio->disponible = $disponible;
+            $principio->save();
         }else{
-            $proteina->disponible = false;
-            $proteina->save();
+            $principio->disponible = false;
+            $principio->save();
         }
-        if($name != $proteina->name){
-            $proteina->name = $name;
-            $proteina->save();
+        if($name != $principio->name){
+            $principio->name = $name;
+            $principio->save();
         }
 
-        return redirect()->route('proteina.create');
+        return redirect()->route('principio.create');
     }
 
     /**
@@ -144,9 +144,9 @@ class ProteinaController extends Controller
      */
     public function destroy($id)
     {
-        $proteina = Proteina::findOrFail($id);
-        $proteina->delete();
+        $principio = Principio::findOrFail($id);
+        $principio->delete();
 
-        return redirect()->route('proteina.create');
+        return redirect()->route('principio.create');
     }
 }

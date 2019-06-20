@@ -5,7 +5,7 @@
                 <tr>
                 <th scope="col">Nombre</th>
                 <th scope="col">Estado</th>
-                <th scope="col">Acciones</th>
+                <th scope="col">Acción</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,8 +25,10 @@
                 <form action="{{route('proteina.destroy', $proteina->id)}}" method="POST">
                     @method('DELETE')
                     @csrf
-                    <a href="{{ route('proteina.edit',$proteina->id)}}" class="btn btn-link text-primary"><i class="far fa-edit"></i></a>
-                    <button type="submit" class="btn btn-link-secundary"><i class="fas fa-trash-alt"></i></button>
+                    <div class="d-flex p-2 bd-highlight">
+                        <a href="{{ route('proteina.edit',$proteina->id)}}" class="btn btn-link text-primary"><i class="far fa-edit"></i></a>
+                        <button type="submit" class="btn btn-link-secundary"><i class="fas fa-trash-alt"></i></button>
+                    </div>
                 </form>
                 </td>
                 </tr>

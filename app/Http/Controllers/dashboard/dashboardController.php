@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\dashboard;
 
-use App\Proteina;
-use App\Principio;
-use App\Sopa;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class MenuController extends Controller
+class dashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +14,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $proteinas = Proteina::all();
-        $principios = Principio::all();
-        $sopas = Sopa::all();
-
-        $title = 'ALMUERZO CORRIENTE';
-
-        return view('menu.index', compact('proteinas','principios','sopas','title'));
+        //
     }
 
     /**
@@ -52,15 +44,10 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Corriente $corriente)
+    public function show($id)
     {
-        $corriente = Corriente::find(1);
-
-        dd($corriente);
-
-        return view('menu.show', compact('corriente'));
+        //
     }
-
 
     /**
      * Show the form for editing the specified resource.
